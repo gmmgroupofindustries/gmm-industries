@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Hind+Siliguri:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAF9F6;
+  --foreground: #181D20;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-bengali: 'Hind Siliguri', 'DM Sans', sans-serif;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  background-color: #FAF9F6;
+  color: #181D20;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Subtle architectural grain / grid effect */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(24, 29, 32, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 29, 32, 0.03) 1px, transparent 1px);
+}
+
+/* Display serif italic utility to match the iconic nsumibc typographic style */
+.font-display-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Bengali font enforcement when active */
+[lang="bn"] {
+  font-family: var(--font-bengali);
+}
+
+[lang="bn"] .font-display-italic {
+  font-family: var(--font-serif), var(--font-bengali);
+  font-style: italic;
+}
+
+/* Custom interactive pill buttons */
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pill-button-primary {
+  background: linear-gradient(135deg, #FA5D19 0%, #BF1E07 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(250, 93, 25, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pill-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(250, 93, 25, 0.4);
+}
+
+.pill-button-outline {
+  background: #FFFFFF;
+  color: #181D20;
+  border: 1px solid rgba(24, 29, 32, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.pill-button-outline:hover {
+  border-color: #FA5D19;
+  color: #FA5D19;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(250, 93, 25, 0.15);
+}
+
+/* Marquee track */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-paused .marquee-track {
+  animation-play-state: paused !important;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Selection */
+::selection {
+  background-color: #FA5D19;
+  color: #FFFFFF;
+}
